@@ -70,6 +70,7 @@ const rules = {
 	}),
 	newline: markdown.defaultRules.newline,
 	escape: markdown.defaultRules.escape,
+	link: markdown.defaultRules.link,
 	autolink: Object.assign({ }, markdown.defaultRules.autolink, {
 		parse: capture => {
 			return {
@@ -267,16 +268,12 @@ const rulesDiscordOnly = Object.assign({ }, rulesDiscord, {
 	})
 });
 
-const rulesEmbed = Object.assign({ }, rules, {
-	link: markdown.defaultRules.link
-});
-
 const parser = markdown.parserFor(rules);
 const htmlOutput = markdown.outputFor(rules, 'html');
 const parserDiscord = markdown.parserFor(rulesDiscordOnly);
 const htmlOutputDiscord = markdown.outputFor(rulesDiscordOnly, 'html');
-const parserEmbed = markdown.parserFor(rulesEmbed);
-const htmlOutputEmbed = markdown.outputFor(rulesEmbed, 'html');
+const parserEmbed = markdown.parserFor(rules);
+const htmlOutputEmbed = markdown.outputFor(rules, 'html');
 
 /**
  * Parse markdown and return the HTML output
@@ -330,7 +327,7 @@ module.exports = {
 	toHTML,
 	rules,
 	rulesDiscordOnly,
-	rulesEmbed,
+	rulesEmbed: rules,
 	markdownEngine: markdown,
 	htmlTag
 };
