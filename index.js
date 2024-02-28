@@ -151,7 +151,21 @@ const rules = {
 		html: function(node, output, state) {
 			return htmlTag('span', output(node.content, state), { class: 'd-spoiler' }, state);
 		}
-	}
+	},
+	heading: Object.assign({}, markdown.defaultRules.heading, {
+		match: function(source, state) {
+			if (state.prevCapture === null || state.prevCapture[0] === "\n") {
+				return /^(#{1,3}) +([^\n]+?)(\n|$)/.exec(source);
+			}
+			return null;
+		},
+	}),
+	list: Object.assign({ }, markdown.defaultRules.list, {
+		match: function(source, state, prevCapture) {
+			state._list = true
+			return markdown.defaultRules.list.match(source, state, prevCapture);
+		}
+	})
 };
 
 const discordCallbackDefaults = {
