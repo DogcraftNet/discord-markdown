@@ -37,6 +37,8 @@ toHTML('This **is** a __test__', options);
   * `role`: (`id`: Number) Role mentions "@somerole"
   * `everyone`: () Everyone mention "@everyone"
   * `here`: () Here mention "@here"
+  * `slash`: (`name`: String, `id`: Number) Slash command reference "</somecommand:someid>"
+  * `timestamp`: (`timestamp`: Number, `style`: String) Relative timestamp reference "<t:sometimestamp:somestyle>"
 * `cssModuleNames`: Object, maps CSS class names to CSS module class names
 
 ### Mention and Emoji Handling
