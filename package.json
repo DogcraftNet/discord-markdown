@@ -1,6 +1,6 @@
 {
-	"name": "discord-markdown",
-	"version": "2.5.1",
+	"name": "@odiffey/discord-markdown",
+	"version": "2.6.0",
 	"description": "A markdown parser for Discord messages",
 	"keywords": [
 		"discord",
@@ -10,10 +10,11 @@
 	],
 	"main": "index.js",
 	"types": "index.d.ts",
-	"repository": "https://github.com/brussell98/discord-markdown.git",
+	"repository": "https://github.com/odiffey/discord-markdown.git",
 	"author": "Brussell (https://brussell.me)",
 	"contributors": [
-		"Sorunome"
+		"Sorunome",
+		"odiffey"
 	],
 	"license": "MIT",
 	"private": false,
