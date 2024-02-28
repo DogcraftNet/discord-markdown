@@ -174,7 +174,12 @@ const discordCallbackDefaults = {
 	channel: node => '#' + markdown.sanitizeText(node.id),
 	role: node => '&' + markdown.sanitizeText(node.id),
 	everyone: () => '@everyone',
-	here: () => '@here'
+	here: () => '@here',
+	slash: node => '/' + markdown.sanitizeText(node.name),
+	timestamp: node =>
+		'<t:' + markdown.sanitizeText(node.timestamp) + (
+			node.style ? ':' + node.style : ''
+		) + '>'
 };
 
 const rulesDiscord = {
@@ -251,6 +256,32 @@ const rulesDiscord = {
 		html: function(node, output, state) {
 			return htmlTag('span', state.discordCallback.here(node), { class: 'd-mention d-user' }, state);
 		}
+	},
+	discordSlash: {
+		order: markdown.defaultRules.strong.order,
+		match: source => /^<\/([\w-]{1,32}):([\d]{16,22})>/.exec(source),
+		parse: function(capture) {
+			return {
+				name: capture[1],
+				id: capture[2],
+			};
+		},
+		html: function(node, output, state) {
+			return htmlTag('span', state.discordCallback.slash(node), { class: 'd-mention d-slash' }, state);
+		},
+	},
+	discordTimestamp: {
+		order: markdown.defaultRules.strong.order,
+		match: source => /^<t:(\d+)(?::(R|t|T|d|D|f|F))?>/.exec(source),
+		parse: function(capture) {
+			return {
+				timestamp: capture[1],
+				style: capture[2],
+			};
+		},
+		html: function(node, output, state) {
+			return htmlTag('span', state.discordCallback.timestamp(node), { class: 'd-timestamp' }, state);
+		},
 	}
 };
 
