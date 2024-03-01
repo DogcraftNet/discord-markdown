@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/odiffey/discord-markdown/compare/v2.6.0...v3.0.0) (2024-03-01)
+
+### Improvements
+
+- Refactored package in TypeScript
+
+# [2.6.0](https://github.com/odiffey/discord-markdown/compare/v2.5.1...v2.6.0) (2024-02-28)
+
+### Features
+
+- Added support for headings and lists
+- Added support for markdown links
+- Added support for timestamps and slash commands
+
 # [2.5.1](https://github.com/brussell98/discord-markdown/compare/v2.5.0...v2.5.1) (2021-09-17)
 
 ### Improvements

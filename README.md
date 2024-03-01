@@ -1,17 +1,20 @@
 # discord-markdown
+
 A markdown parser for Discord messages.
+
+This is package is a fork of [discord-markdown by brussell98](https://github.com/brussell98/discord-markdown), rewritten in TypeScript and actively maintained.
 
 ## Using
 
 ```bash
-yarn add discord-markdown
-npm i discord-markdown
+npm install @odiffey/discord-markdown
+yarn add @odiffey/discord-markdown
 ```
 
 For browser use, import `dist/discord-markdown.min.js`
 
 ```js
-const { parser, htmlOutput, toHTML } = require('discord-markdown');
+import { parser, htmlOutput, toHTML } = from 'discord-markdown';
 
 console.log(toHTML('This **is** a __test__'));
 // => This <strong>is</strong> a <u>test</u>
@@ -22,7 +25,7 @@ Fenced codeblocks will include highlight.js tags and classes.
 ## Options
 
 ```js
-const { toHTML } = require('discord-markdown');
+import { toHTML } = from 'discord-markdown';
 toHTML('This **is** a __test__', options);
 ```
 
@@ -48,7 +51,7 @@ Using the `discordCallback` option you can define custom functions to handle par
 Example:
 
 ```js
-const { toHTML } = require('discord-markdown');
+import { toHTML } = from 'discord-markdown';
 toHTML('This is a mention for <@95286900801146880>', {
 	discordCallback: {
 		user: node => '@' + users[node.id];
