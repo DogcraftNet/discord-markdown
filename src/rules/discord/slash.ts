@@ -15,7 +15,7 @@ export default {
         createHtmlTag(
             'span',
             state.discordCallback.slash(node),
-            { class: 'd-mention d-slash' },
+            { class: 'd-slash' },
             true,
             state,
         ),

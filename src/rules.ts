@@ -43,8 +43,10 @@ export const rulesHtml = {
     codeBlock,
     em,
     emoticon,
+    heading,
     inlineCode,
     link: markdown.defaultRules.link,
+    list,
     newline: markdown.defaultRules.newline,
     spoiler,
     strike,
@@ -57,6 +59,4 @@ export const rules = {
     ...rulesDiscordOnly,
     ...rulesHtml,
     escape: markdown.defaultRules.escape,
-    heading,
-    list,
 };

@@ -124,3 +124,22 @@ test('spoilers are handled correctly', () => {
         '<span class="d-spoiler"><pre><code class="hljs">code\nblock</code></pre></span>',
     );
 });
+
+test('slash command parsing', () => {
+    expect(markdown.toHTML('</command:1234567890123456>')).toBe(
+        '<span class="d-slash">/command</span>',
+    );
+});
+
+test.each([
+    '<t:1709332818>',
+    '<t:1709332818000>',
+    '<t:1709332818:F>',
+    '<t:1709332818:f>',
+    '<t:1709332818000:F>',
+    '<t:1709332818000:f>',
+])('timestamp parsing with "%s"', (value: string) => {
+    expect(markdown.toHTML(value)).toBe(
+        `<span class="d-timestamp">${value}</span>`,
+    );
+});

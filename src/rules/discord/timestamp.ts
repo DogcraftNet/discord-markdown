@@ -15,7 +15,7 @@ export default {
         createHtmlTag(
             'span',
             state.discordCallback.timestamp(node),
-            { class: 'd-mention d-timestamp' },
+            { class: 'd-timestamp' },
             true,
             state,
         ),

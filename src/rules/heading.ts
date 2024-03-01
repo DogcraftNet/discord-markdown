@@ -1,4 +1,4 @@
-import markdown, { ParserRule } from '@khanacademy/simple-markdown';
+import markdown from '@khanacademy/simple-markdown';
 
 export default {
     ...markdown.defaultRules.heading,
@@ -8,4 +8,4 @@ export default {
         }
         return null;
     },
-} as ParserRule;
+} as typeof markdown.defaultRules.heading;

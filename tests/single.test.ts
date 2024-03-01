@@ -161,3 +161,19 @@ test('css module support', () => {
         'Hey <span class="d-mention d-user">@everyone</span> check this out!',
     );
 });
+
+test('limited heading parsing', () => {
+    expect(markdown.toHTML('# Heading one')).toBe('<h1>Heading one</h1>');
+    expect(markdown.toHTML('## Heading two')).toBe('<h2>Heading two</h2>');
+    expect(markdown.toHTML('### Heading three')).toBe('<h3>Heading three</h3>');
+    expect(markdown.toHTML('#### Heading four')).toBe('#### Heading four');
+    expect(markdown.toHTML('##### Heading five')).toBe('##### Heading five');
+    expect(markdown.toHTML('###### Heading six')).toBe('###### Heading six');
+});
+
+test('lists parsing', () => {
+    expect(markdown.toHTML('- Line One')).toBe('<ul><li>Line One</li></ul>');
+    expect(markdown.toHTML('- Line One\n- Line Two')).toBe(
+        '<ul><li>Line One</li><li>Line Two</li></ul>',
+    );
+});
