@@ -1,6 +1,6 @@
 {
 	"name": "@odiffey/discord-markdown",
-	"version": "3.0.1",
+	"version": "3.1.0",
 	"description": "A markdown parser for Discord messages",
 	"keywords": [
 		"discord",
@@ -24,8 +24,8 @@
 	"private": false,
 	"scripts": {
 		"build": "vite build && tsc --emitDeclarationOnly",
-		"lint": "eslint src --ext .ts",
-		"test": "vitest"
+		"lint": "eslint src tests --ext .ts",
+		"test": "TZ=UTC vitest"
 	},
 	"exports": {
 		".": {

@@ -1,4 +1,10 @@
-# [3.0.0](https://github.com/odiffey/discord-markdown/compare/v2.6.0...v3.0.0) (2024-03-01)
+# [3.1.0](https://github.com/odiffey/discord-markdown/compare/v3.0.1...v3.1.0) (2024-03-02)
+
+### Features
+
+- Added default locale timestamp formatting
+
+# [3.0.1](https://github.com/odiffey/discord-markdown/compare/v2.6.0...v3.0.1) (2024-03-01)
 
 ### Improvements
 

@@ -6,7 +6,7 @@ import createHtmlTag from '../../createHtmlTag';
 
 export default {
     order: markdown.defaultRules.strong.order,
-    match: source => /^<t:(\d+)(?::(R|t|T|d|D|f|F))?>/.exec(source),
+    match: source => /^<t:(\d{10})(?::(R|t|T|d|D|f|F))?>/.exec(source),
     parse: capture => ({
         timestamp: capture[1],
         style: capture[2],

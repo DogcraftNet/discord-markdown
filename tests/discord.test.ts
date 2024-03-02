@@ -132,14 +132,16 @@ test('slash command parsing', () => {
 });
 
 test.each([
-    '<t:1709332818>',
-    '<t:1709332818000>',
-    '<t:1709332818:F>',
-    '<t:1709332818:f>',
-    '<t:1709332818000:F>',
-    '<t:1709332818000:f>',
-])('timestamp parsing with "%s"', (value: string) => {
-    expect(markdown.toHTML(value)).toBe(
-        `<span class="d-timestamp">${value}</span>`,
+    [':t', '22:40'],
+    [':T', '22:40:18'],
+    [':d', '01/03/2024'],
+    [':D', '1 Mar 2024'],
+    [':F', 'Friday, 1 March 2024 at 22:40'],
+    [':R', '1 March 2024 at 22:40'],
+    [':f', '1 March 2024 at 22:40'],
+    ['', '1 March 2024 at 22:40'],
+])('timestamp parsing with "%s"', (format, expected) => {
+    expect(markdown.toHTML(`<t:1709332818${format}>`)).toBe(
+        `<span class="d-timestamp">${expected}</span>`,
     );
 });
