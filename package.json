@@ -25,7 +25,7 @@
 	"scripts": {
 		"build": "vite build && tsc --emitDeclarationOnly",
 		"lint": "eslint src tests --ext .ts",
-		"test": "TZ=UTC vitest"
+		"test": "TZ=UTC LC_ALL=en_GB.UTF-8 vitest"
 	},
 	"exports": {
 		".": {
