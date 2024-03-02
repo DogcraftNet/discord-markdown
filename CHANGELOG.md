@@ -1,3 +1,9 @@
+# [3.1.1](https://github.com/odiffey/discord-markdown/compare/v3.1.0...v3.1.1) (2024-03-02)
+
+### Fixes
+
+- Fixed package type reference
+
 # [3.1.0](https://github.com/odiffey/discord-markdown/compare/v3.0.1...v3.1.0) (2024-03-02)
 
 ### Features

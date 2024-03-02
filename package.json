@@ -1,6 +1,6 @@
 {
 	"name": "@odiffey/discord-markdown",
-	"version": "3.1.0",
+	"version": "3.1.1",
 	"description": "A markdown parser for Discord messages",
 	"keywords": [
 		"discord",
@@ -15,7 +15,11 @@
 	"module": "./dist/discord-markdown.mjs",
 	"types": "./dist/main.d.ts",
 	"repository": "https://github.com/odiffey/discord-markdown.git",
-	"author": "Owen Diffey <owen@diffey.dev>",
+	"author": {
+		"name": "Owen Diffey",
+		"url": "https://diffey.dev",
+		"email": "owen@diffey.dev"
+	},
 	"contributors": [
 		"brussell98",
 		"Sorunome"

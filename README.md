@@ -2,7 +2,7 @@
 
 A markdown parser for Discord messages.
 
-This is package is a fork of [discord-markdown by brussell98](https://github.com/brussell98/discord-markdown), rewritten in TypeScript and actively maintained.
+This package is a fork of [discord-markdown by brussell98](https://github.com/brussell98/discord-markdown), rewritten in TypeScript and actively maintained.
 
 ## Using
 
@@ -41,7 +41,7 @@ toHTML('This **is** a __test__', options);
   * `everyone`: () Everyone mention "@everyone"
   * `here`: () Here mention "@here"
   * `slash`: (`name`: String, `id`: Number) Slash command reference "</somecommand:someid>"
-  * `timestamp`: (`timestamp`: Number, `style`: String) Relative timestamp reference "<t:sometimestamp:somestyle>"
+  * `timestamp`: (`timestamp`: Number, `style`: String|undefined) Relative timestamp reference "<t:sometimestamp:somestyle>"
 * `cssModuleNames`: Object, maps CSS class names to CSS module class names
 
 ### Mention and Emoji Handling
