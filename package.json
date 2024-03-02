@@ -13,7 +13,7 @@
 	],
 	"main": "./dist/discord-markdown.umd.js",
 	"module": "./dist/discord-markdown.mjs",
-	"types": "./dist/src/main.d.ts",
+	"types": "./dist/main.d.ts",
 	"repository": "https://github.com/odiffey/discord-markdown.git",
 	"author": "Owen Diffey <owen@diffey.dev>",
 	"contributors": [
@@ -31,8 +31,7 @@
 		".": {
 			"import": "./dist/discord-markdown.mjs",
 			"require": "./dist/discord-markdown.umd.js"
-		},
-		"./dist/style.css": "./dist/style.css"
+		}
 	},
 	"dependencies": {
 		"highlight.js": "^11.9.0",
