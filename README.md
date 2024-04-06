@@ -11,10 +11,10 @@ npm install @odiffey/discord-markdown
 yarn add @odiffey/discord-markdown
 ```
 
-For browser use, import `dist/discord-markdown.min.js`
+For browser use, import `@odiffey/discord-markdown/dist/discord-markdown.umd.js`
 
 ```js
-import { parser, htmlOutput, toHTML } = from 'discord-markdown';
+import { parser, htmlOutput, toHTML } from '@odiffey/discord-markdown';
 
 console.log(toHTML('This **is** a __test__'));
 // => This <strong>is</strong> a <u>test</u>
@@ -25,7 +25,7 @@ Fenced codeblocks will include highlight.js tags and classes.
 ## Options
 
 ```js
-import { toHTML } = from 'discord-markdown';
+import { toHTML } from '@odiffey/discord-markdown';
 toHTML('This **is** a __test__', options);
 ```
 
@@ -51,7 +51,7 @@ Using the `discordCallback` option you can define custom functions to handle par
 Example:
 
 ```js
-import { toHTML } = from 'discord-markdown';
+import { toHTML } from '@odiffey/discord-markdown';
 toHTML('This is a mention for <@95286900801146880>', {
 	discordCallback: {
 		user: node => '@' + users[node.id];
