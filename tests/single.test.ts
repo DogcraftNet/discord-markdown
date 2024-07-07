@@ -177,9 +177,21 @@ test('heading following another', () => {
     );
 });
 
+test('heading following list', () => {
+    expect(markdown.toHTML('- List\n\n# Heading')).toBe(
+        '<ul><li>List</li></ul><h1>Heading</h1>',
+    );
+});
+
 test('lists parsing', () => {
     expect(markdown.toHTML('- Line One')).toBe('<ul><li>Line One</li></ul>');
     expect(markdown.toHTML('- Line One\n- Line Two')).toBe(
         '<ul><li>Line One</li><li>Line Two</li></ul>',
+    );
+});
+
+test('nested lists', () => {
+    expect(markdown.toHTML('- Item\n  - Child\n  - Child\n- Item')).toBe(
+        '<ul><li>Item<br><ul><li>Child</li><li>Child</li></ul></li><li>Item</li></ul>',
     );
 });
