@@ -171,6 +171,12 @@ test('limited heading parsing', () => {
     expect(markdown.toHTML('###### Heading six')).toBe('###### Heading six');
 });
 
+test('heading following another', () => {
+    expect(markdown.toHTML('# Heading One\n# Heading Two')).toBe(
+        '<h1>Heading One</h1><h1>Heading Two</h1>',
+    );
+});
+
 test('lists parsing', () => {
     expect(markdown.toHTML('- Line One')).toBe('<ul><li>Line One</li></ul>');
     expect(markdown.toHTML('- Line One\n- Line Two')).toBe(
