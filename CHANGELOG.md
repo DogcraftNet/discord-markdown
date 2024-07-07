@@ -1,3 +1,10 @@
+# [3.1.2](https://github.com/odiffey/discord-markdown/compare/v3.1.1...v3.1.2) (2024-07-07)
+
+### Fixes
+
+- Fixed headings following non-empty row not being parsed
+- Fixed lists including proceeding content
+
 # [3.1.1](https://github.com/odiffey/discord-markdown/compare/v3.1.0...v3.1.1) (2024-03-02)
 
 ### Fixes
