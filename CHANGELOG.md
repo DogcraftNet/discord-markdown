@@ -1,3 +1,9 @@
+# [3.2.0](https://github.com/odiffey/discord-markdown/compare/v3.1.2...v3.2.0) (2024-08-03)
+
+### Features
+
+- Added footnote rule
+
 # [3.1.2](https://github.com/odiffey/discord-markdown/compare/v3.1.1...v3.1.2) (2024-07-07)
 
 ### Fixes
