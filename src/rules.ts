@@ -13,6 +13,7 @@ import br from './rules/br';
 import codeBlock from './rules/codeBlock';
 import em from './rules/em';
 import emoticon from './rules/emoticon';
+import footnote from './rules/footnote';
 import heading from './rules/heading';
 import inlineCode from './rules/inlineCode';
 import list from './rules/list';
@@ -43,6 +44,7 @@ export const rulesHtml = {
     codeBlock,
     em,
     emoticon,
+    footnote,
     heading,
     inlineCode,
     link: markdown.defaultRules.link,

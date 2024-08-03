@@ -195,3 +195,7 @@ test('nested lists', () => {
         '<ul><li>Item<br><ul><li>Child</li><li>Child</li></ul></li><li>Item</li></ul>',
     );
 });
+
+test('footnote', () => {
+    expect(markdown.toHTML('-# Footnote')).toBe('<small>Footnote</small>');
+});
