@@ -1,120 +1,106 @@
 import { expect, test } from 'vitest';
-import markdown from '../src/main';
+import { toHTML } from '../src/main';
 
 test('Converts **text** to <strong>text</strong>', () => {
-    expect(
-        markdown.toHTML('This is a **test** with **some bold** text in it'),
-    ).toBe(
+    expect(toHTML('This is a **test** with **some bold** text in it')).toBe(
         'This is a <strong>test</strong> with <strong>some bold</strong> text in it',
     );
 });
 
 test('Converts _text_ to <em>text</em>', () => {
-    expect(
-        markdown.toHTML('This is a _test_ with _some italicized_ text in it'),
-    ).toBe('This is a <em>test</em> with <em>some italicized</em> text in it');
+    expect(toHTML('This is a _test_ with _some italicized_ text in it')).toBe(
+        'This is a <em>test</em> with <em>some italicized</em> text in it',
+    );
 });
 
 test('Converts _ text_ to <em> text </em>', () => {
-    expect(
-        markdown.toHTML('This is a _ test_ with _ italic _ text in it'),
-    ).toBe('This is a <em> test</em> with <em> italic </em> text in it');
+    expect(toHTML('This is a _ test_ with _ italic _ text in it')).toBe(
+        'This is a <em> test</em> with <em> italic </em> text in it',
+    );
 });
 
 test('Converts __text__ to <u>text</u>', () => {
     expect(
-        markdown.toHTML(
-            'This is a __test__ with __some underlined__ text in it',
-        ),
+        toHTML('This is a __test__ with __some underlined__ text in it'),
     ).toBe('This is a <u>test</u> with <u>some underlined</u> text in it');
 });
 
 test('Converts *text* to <em>text</em>', () => {
-    expect(
-        markdown.toHTML('This is a *test* with *some italicized* text in it'),
-    ).toBe('This is a <em>test</em> with <em>some italicized</em> text in it');
+    expect(toHTML('This is a *test* with *some italicized* text in it')).toBe(
+        'This is a <em>test</em> with <em>some italicized</em> text in it',
+    );
 });
 
 test('Converts `text` to <code>text</code>', () => {
-    expect(markdown.toHTML('Code: `1 + 1 = 2`')).toBe(
-        'Code: <code>1 + 1 = 2</code>',
-    );
+    expect(toHTML('Code: `1 + 1 = 2`')).toBe('Code: <code>1 + 1 = 2</code>');
 });
 
 test('Converts ~~text~~ to <del>text</del>', () => {
-    expect(markdown.toHTML('~~this~~that')).toBe('<del>this</del>that');
+    expect(toHTML('~~this~~that')).toBe('<del>this</del>that');
 });
 
 test('Converts ~~ text ~~ to <del>', () => {
-    expect(markdown.toHTML('~~ text ~~ stuffs')).toBe(
-        '<del> text </del> stuffs',
-    );
+    expect(toHTML('~~ text ~~ stuffs')).toBe('<del> text </del> stuffs');
 });
 
 test('Converts links to <a> links', () => {
-    expect(markdown.toHTML('https://brussell.me')).toBe(
+    expect(toHTML('https://brussell.me')).toBe(
         '<a href="https://brussell.me">https://brussell.me</a>',
     );
 
-    expect(markdown.toHTML('<https://brussell.me>')).toBe(
+    expect(toHTML('<https://brussell.me>')).toBe(
         '<a href="https://brussell.me">https://brussell.me</a>',
     );
 });
 
 test('Fence normal code blocks', () => {
-    expect(markdown.toHTML('text\n```\ncode\nblock\n```\nmore text')).toBe(
+    expect(toHTML('text\n```\ncode\nblock\n```\nmore text')).toBe(
         'text<br><pre><code class="hljs">code\nblock</code></pre><br>more text',
     );
 });
 
 test('Fenced code blocks with hljs', () => {
-    expect(
-        markdown.toHTML('```js\nconst one = 1;\nconsole.log(one);\n```'),
-    ).toBe(
+    expect(toHTML('```js\nconst one = 1;\nconsole.log(one);\n```')).toBe(
         '<pre><code class="hljs js"><span class="hljs-keyword">const</span> one = <span class="hljs-number">1</span>;\n<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(one);</code></pre>',
     );
 });
 
 test('Fenced code blocks on one line', () => {
-    expect(markdown.toHTML('`test`\n\n```test```')).toBe(
+    expect(toHTML('`test`\n\n```test```')).toBe(
         '<code>test</code><br><br><pre><code class="hljs">test</code></pre>',
     );
 });
 
 test('Escaped marks', () => {
-    expect(markdown.toHTML('Code: \\`1 + 1` = 2`')).toBe(
-        'Code: `1 + 1<code>= 2</code>',
-    );
+    expect(toHTML('Code: \\`1 + 1` = 2`')).toBe('Code: `1 + 1<code>= 2</code>');
 });
 
 test('Multiline', () => {
-    expect(markdown.toHTML('multi\nline')).toBe('multi<br>line');
-    expect(markdown.toHTML('some *awesome* text\nthat **spreads** lines')).toBe(
+    expect(toHTML('multi\nline')).toBe('multi<br>line');
+    expect(toHTML('some *awesome* text\nthat **spreads** lines')).toBe(
         'some <em>awesome</em> text<br>that <strong>spreads</strong> lines',
     );
 });
 
 test('Block quotes', () => {
-    expect(markdown.toHTML('> text > here')).toBe(
+    expect(toHTML('> text > here')).toBe(
         '<blockquote>text &gt; here</blockquote>',
     );
-    expect(markdown.toHTML('> text\nhere')).toBe(
+    expect(toHTML('> text\nhere')).toBe(
         '<blockquote>text<br></blockquote>here',
     );
-    expect(markdown.toHTML('>text')).toBe('&gt;text');
-    expect(
-        markdown.toHTML('outside\n>>> inside\ntext\n> here\ndoes not end'),
-    ).toBe(
+    expect(toHTML('>text')).toBe('&gt;text');
+    expect(toHTML('outside\n>>> inside\ntext\n> here\ndoes not end')).toBe(
         'outside<br><blockquote>inside<br>text<br>&gt; here<br>does not end</blockquote>',
     );
-    expect(markdown.toHTML('>>> test\n```js\ncode```')).toBe(
+    expect(toHTML('>>> test\n```js\ncode```')).toBe(
         '<blockquote>test<br><pre><code class="hljs js">code</code></pre></blockquote>',
     );
-    expect(markdown.toHTML('> text\n> \n> here')).toBe(
+    expect(toHTML('> text\n> \n> here')).toBe(
         '<blockquote>text<br><br>here</blockquote>',
     );
     expect(
-        markdown.toHTML(
+        toHTML(
             'text\n\n> Lorem ipsum\n>> Lorem ipsum\n> Lorem ipsum\n> > Lorem ipsum\n> Lorem ipsum\n\nLorem ipsum\n\n> Lorem ipsum\n\nLorem ipsum\n\n>>> text\ntext\ntext\n',
         ),
     ).toBe(
@@ -123,31 +109,29 @@ test('Block quotes', () => {
 });
 
 test("don't drop arms", () => {
-    expect(markdown.toHTML('¯\\_(ツ)_/¯')).toBe('¯\\_(ツ)_/¯');
-    expect(markdown.toHTML('¯\\_(ツ)_/¯ *test* ¯\\_(ツ)_/¯')).toBe(
+    expect(toHTML('¯\\_(ツ)_/¯')).toBe('¯\\_(ツ)_/¯');
+    expect(toHTML('¯\\_(ツ)_/¯ *test* ¯\\_(ツ)_/¯')).toBe(
         '¯\\_(ツ)_/¯ <em>test</em> ¯\\_(ツ)_/¯',
     );
 });
 
 test('escape html', () => {
-    expect(markdown.toHTML('<b>test</b>')).toBe('&lt;b&gt;test&lt;/b&gt;');
-    expect(markdown.toHTML('```\n\n<b>test</b>\n```')).toBe(
+    expect(toHTML('<b>test</b>')).toBe('&lt;b&gt;test&lt;/b&gt;');
+    expect(toHTML('```\n\n<b>test</b>\n```')).toBe(
         '<pre><code class="hljs">&lt;b&gt;test&lt;/b&gt;</code></pre>',
     );
-    expect(markdown.toHTML('```html\n\n<b>test</b>\n```')).toBe(
+    expect(toHTML('```html\n\n<b>test</b>\n```')).toBe(
         '<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></code></pre>',
     );
 });
 
 test("don't escape html if set", () => {
-    expect(markdown.toHTML('<b>test</b>', { escapeHTML: false })).toBe(
-        '<b>test</b>',
-    );
+    expect(toHTML('<b>test</b>', { escapeHTML: false })).toBe('<b>test</b>');
 });
 
 test('css module support', () => {
     expect(
-        markdown.toHTML('Hey @everyone check this out!', {
+        toHTML('Hey @everyone check this out!', {
             cssModuleNames: {
                 'd-mention': '_DiscordMessage_1ve6S_d-mention_A64y',
                 'd-user': '_DiscordMessage_1ve6S_d-user_75Tef',
@@ -157,45 +141,45 @@ test('css module support', () => {
         'Hey <span class="_DiscordMessage_1ve6S_d-mention_A64y _DiscordMessage_1ve6S_d-user_75Tef">@everyone</span> check this out!',
     );
 
-    expect(markdown.toHTML('Hey @everyone check this out!')).toBe(
+    expect(toHTML('Hey @everyone check this out!')).toBe(
         'Hey <span class="d-mention d-user">@everyone</span> check this out!',
     );
 });
 
 test('limited heading parsing', () => {
-    expect(markdown.toHTML('# Heading one')).toBe('<h1>Heading one</h1>');
-    expect(markdown.toHTML('## Heading two')).toBe('<h2>Heading two</h2>');
-    expect(markdown.toHTML('### Heading three')).toBe('<h3>Heading three</h3>');
-    expect(markdown.toHTML('#### Heading four')).toBe('#### Heading four');
-    expect(markdown.toHTML('##### Heading five')).toBe('##### Heading five');
-    expect(markdown.toHTML('###### Heading six')).toBe('###### Heading six');
+    expect(toHTML('# Heading one')).toBe('<h1>Heading one</h1>');
+    expect(toHTML('## Heading two')).toBe('<h2>Heading two</h2>');
+    expect(toHTML('### Heading three')).toBe('<h3>Heading three</h3>');
+    expect(toHTML('#### Heading four')).toBe('#### Heading four');
+    expect(toHTML('##### Heading five')).toBe('##### Heading five');
+    expect(toHTML('###### Heading six')).toBe('###### Heading six');
 });
 
 test('heading following another', () => {
-    expect(markdown.toHTML('# Heading One\n# Heading Two')).toBe(
+    expect(toHTML('# Heading One\n# Heading Two')).toBe(
         '<h1>Heading One</h1><h1>Heading Two</h1>',
     );
 });
 
 test('heading following list', () => {
-    expect(markdown.toHTML('- List\n\n# Heading')).toBe(
+    expect(toHTML('- List\n\n# Heading')).toBe(
         '<ul><li>List</li></ul><h1>Heading</h1>',
     );
 });
 
 test('lists parsing', () => {
-    expect(markdown.toHTML('- Line One')).toBe('<ul><li>Line One</li></ul>');
-    expect(markdown.toHTML('- Line One\n- Line Two')).toBe(
+    expect(toHTML('- Line One')).toBe('<ul><li>Line One</li></ul>');
+    expect(toHTML('- Line One\n- Line Two')).toBe(
         '<ul><li>Line One</li><li>Line Two</li></ul>',
     );
 });
 
 test('nested lists', () => {
-    expect(markdown.toHTML('- Item\n  - Child\n  - Child\n- Item')).toBe(
+    expect(toHTML('- Item\n  - Child\n  - Child\n- Item')).toBe(
         '<ul><li>Item<br><ul><li>Child</li><li>Child</li></ul></li><li>Item</li></ul>',
     );
 });
 
 test('footnote', () => {
-    expect(markdown.toHTML('-# Footnote')).toBe('<small>Footnote</small>');
+    expect(toHTML('-# Footnote')).toBe('<small>Footnote</small>');
 });

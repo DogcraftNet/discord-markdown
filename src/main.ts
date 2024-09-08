@@ -67,15 +67,17 @@ const toHTML = (
     return markdownOutput(markdownParser(source, state), state);
 };
 
-export default {
-    parser: (source: string) => parser(source, { inline: true }),
+const inlineParser = (source: string) => parser(source, { inline: true });
+
+export {
+    inlineParser as parser,
     output,
-    htmlOutput: output, // Keep for backwards compatibility
+    output as htmlOutput, // Keep for backwards compatibility
     toHTML,
     rules,
     rulesDiscordOnly,
-    rulesEmbed: rules,
-    markdownEngine: markdown,
+    rules as rulesEmbed,
+    markdown as markdownEngine,
     createHtmlTag,
-    htmlTag: createHtmlTag, // Keep for backwards compatibility
+    createHtmlTag as htmlTag, // Keep for backwards compatibility
 };
