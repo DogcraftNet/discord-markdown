@@ -34,7 +34,8 @@
 	"exports": {
 		".": {
 			"import": "./dist/discord-markdown.mjs",
-			"require": "./dist/discord-markdown.umd.js"
+			"require": "./dist/discord-markdown.umd.js",
+			"types": "./dist/main.d.ts"
 		}
 	},
 	"dependencies": {
