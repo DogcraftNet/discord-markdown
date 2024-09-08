@@ -1,3 +1,19 @@
+# [3.3.0](https://github.com/odiffey/discord-markdown/compare/v3.2.0...v3.3.0) (2024-09-08)
+
+### **Breaking Changes**
+
+This release replaces the default export with named exports, to maintain functionality
+you may need to replace `import discordMarkdown from '@odiffey/discord-markdown'`
+with `import * as discordMarkdown from '@odiffey/discord-markdown'`.
+
+### Improvements
+
+- Replaces default export with named exports
+
+### Fixes
+
+- Adds types to package exports
+
 # [3.2.0](https://github.com/odiffey/discord-markdown/compare/v3.1.2...v3.2.0) (2024-08-03)
 
 ### Features
